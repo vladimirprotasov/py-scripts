@@ -10,7 +10,7 @@ def download_file(url):
     filename_start = url.rfind('/')+1
     filename = url[filename_start:]
     os.chdir('downloaded')
-    print('Готовлюсть скачать {}.'.format(filename))
+    print('Готовлюсь скачать {}.'.format(filename))
 
     r = requests.get(url, stream=True)
     if r.status_code == requests.codes.ok:
