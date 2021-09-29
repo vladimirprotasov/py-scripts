@@ -1,4 +1,6 @@
-"""Program for downloading files by single link or a list of URLs stored in a file"""
+"""Program for downloading files by single link or a list of URLs stored in a file.
+Create the folder 'downloaded' in the directory of the script and then execute the file"""
+
 
 import requests
 from multiprocessing.pool import ThreadPool
