@@ -9,9 +9,10 @@ import http
 import ipaddress
 import datetime
 import pandas as pd
+import re
 
 
-# Mock log data
+# Mock log data - pandas
 def random_ip_address(seed):
     random.seed(seed)
     return str(ipaddress.IPv4Address(random.getrandbits(32)))
@@ -49,15 +50,10 @@ def random_dict(rows, start_date, duration, seed_1, seed_2):
     return categories_dict
 
 
-# print(random_dict(20, '01-01-2010 0:0:0', 20, 100))
-
 def generate_dataframe(rows, start_date, duration, seed_1, seed_2):
-    data = random_dict(rows, start_date, duration, seed_1, seed_2)
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(random_dict(rows, start_date, duration, seed_1, seed_2))
     return df
 
 
-print(generate_dataframe(20, '01-01-2010 0:0:0', 20, 5, 300))
-
-
-
+data = generate_dataframe(1000, '01-01-2010 0:0:0', 20, 5, 300)
+print(data)
