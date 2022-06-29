@@ -3,6 +3,10 @@ Program helps with:
  - parsing data from the file
  - counting amount of data repeats
  - exporting data to .csv file
+
+ Example:
+ data = generate_dataframe(1000, '01-01-2010 0:0:0', 20, 5, 300)
+
 """
 import random
 import http
@@ -51,9 +55,29 @@ def random_dict(rows, start_date, duration, seed_1, seed_2):
 
 
 def generate_dataframe(rows, start_date, duration, seed_1, seed_2):
+    """
+    :param rows: amount of records
+    :param start_date: log time start in dd-mm-YYYY H:M:S format
+    :param duration: duration in days
+    :param seed_1: seed range start
+    :param seed_2: seed range end
+    :return: dataframe
+    """
     df = pd.DataFrame(random_dict(rows, start_date, duration, seed_1, seed_2))
     return df
 
 
+def df_get_csv(df: pd.DataFrame, filename: str = 'data.csv', separator: str = '\t', encode: str = 'utf-8'):
+    """
+
+    :param df: Pandas DataFrame
+    :param filename: like "data.csv"
+    :param separator: like "\t"
+    :param encode: like "utf-8"
+    :return: CSV file
+    """
+    return df.to_csv(filename, sep=separator, encoding=encode)
+
+
 data = generate_dataframe(1000, '01-01-2010 0:0:0', 20, 5, 300)
-print(data)
+df_get_csv(data)
