@@ -1,32 +1,9 @@
 import copy
 import time
 import random
+from algorithm.check.sorting import is_sorted
 
 """ Sorting algorithms """
-
-
-# Sequence sort checker
-# WORKING
-def check_sorted(data):
-    sort_status = False
-    if len(data) <= 1:
-        sort_status = True
-        return data
-    elif len(data) > 1 and sort_status is False:
-        scope = len(data) - 1
-        for n in range(scope - 1):
-            if data[scope] > data[scope - 1]:
-                scope -= 1
-                sort_status = True
-            else:
-                sort_status = False
-                break
-        if scope == 1 and sort_status is True:
-            print('Data is sorted')
-            return data
-        else:
-            print('Data is not sorted')
-            return data
 
 
 # My first algorithm
@@ -67,7 +44,7 @@ def sort_2(data):
 # NOT WORKING
 # TODO: Refactor
 def global_sorting(unsorted):
-    full_list = check_sorted(unsorted)
+    full_list = is_sorted(unsorted)
     mid = len(full_list) // 2
 
     first_part = full_list[mid:]
@@ -107,7 +84,7 @@ payload = list_1
 algo = sort_1(data=payload)
 
 # SORTING ZONE
-check_sorted(payload)
+is_sorted(payload)
 print(f'Data for sorting: {payload} \n')
 
 # Time calculation start
@@ -116,5 +93,5 @@ x = algo
 print(f'Calc sorting time: {round(((time.time() - start) * 1000), 3)} milliseconds \n')
 # Time calculation end
 
-check_sorted(x)
+is_sorted(x)
 print(x)
